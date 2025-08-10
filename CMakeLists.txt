@@ -24,7 +24,7 @@ include(FetchContent)
 FetchContent_Declare(
         NekiVK
         GIT_REPOSITORY "https://github.com/Kahoneki/NekiVK.git"
-        GIT_TAG "v1.0.1"
+        GIT_TAG "v1.1.0"
 )
 FetchContent_MakeAvailable(NekiVK)
 target_link_libraries(VulkanPBR PRIVATE NekiVK)
@@ -66,7 +66,7 @@ foreach(SHADER_SRC ${SHADER_SOURCES})
     )
 endforeach()
 
-#Create phony target that depends on all the compiled shader and add it to the executable
+#Create phony target that depends on all the compiled shaders and add it to the executable
 add_custom_target(
     Shaders
     DEPENDS ${SPIRV_OUTPUTS}
