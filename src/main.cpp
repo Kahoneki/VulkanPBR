@@ -1,14 +1,18 @@
 #include <iostream>
 #include <NekiVK/NekiVK.h>
 
+#include "Managers/Application.h"
+
+
+
 int main()
 {
-	Neki::VKLoggerConfig config(true);
-	Neki::VKLogger logger(config);
-	logger.Log(Neki::VK_LOGGER_CHANNEL::SUCCESS, Neki::VK_LOGGER_LAYER::APPLICATION, "NekiVK library built and linked successfully!\n");
+	glfwInit();
 
-	std::cout << "Test complete. Press Enter to exit.\n";
-	std::cin.get();
+	Application app{};
+	app.Start();
+
+	glfwTerminate();
 
 	return 0;
 }
