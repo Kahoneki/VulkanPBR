@@ -24,7 +24,7 @@ include(FetchContent)
 FetchContent_Declare(
         NekiVK
         GIT_REPOSITORY "https://github.com/Kahoneki/NekiVK.git"
-        GIT_TAG "v1.1.0"
+        GIT_TAG "v2.0.0"
 )
 FetchContent_MakeAvailable(NekiVK)
 target_link_libraries(VulkanPBR PRIVATE NekiVK)
