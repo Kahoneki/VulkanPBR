@@ -9,9 +9,11 @@ int main()
 {
 	glfwInit();
 
-	Application app{};
-	app.Start();
-
+	{
+		Application app{};
+		app.Start();
+	}
+	
 	glfwTerminate();
 
 	return 0;

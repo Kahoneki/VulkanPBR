@@ -23,10 +23,6 @@ void Application::Start()
 	{
 		RunFrame();
 	}
-
-	//Todo: this is a temp fix for a shutdownn bug - regular surface destruction results in a segfault, destroying swapchain (and hence surface) first fixes this, but it's a weird workaround.
-	vkDeviceWaitIdle(vkApp->vulkanDevice->GetDevice());
-	vkApp->vulkanSwapchain.reset();
 }
 
 
