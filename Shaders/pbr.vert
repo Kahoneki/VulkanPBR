@@ -28,6 +28,7 @@ layout(location = 4) out mat3 TBN;
 void main()
 {
     TexCoord = aTexCoord;
+    CamPos = cameraData.pos.xyz;
     gl_Position = cameraData.proj * cameraData.view * modelData.model * vec4(aPos, 1.0);
     FragPos = vec3(modelData.model * vec4(aPos, 1.0));
     mat3 normalMatrix = transpose(inverse(mat3(modelData.model)));

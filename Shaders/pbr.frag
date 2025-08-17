@@ -22,30 +22,31 @@ void main()
     float roughness = texture(roughnessSampler, vec3(TexCoord, 0)).b;
     
     vec3 lightPos = vec3(1,-1,1);
-    vec3 lightColour = vec3(0.3,0.15,0.08);
+    vec3 lightColour = vec3(1.0,0.6,1.0);
+    float lightIntensity = 0.05;
     
     vec3 albedo = texture(albedoSampler, vec3(TexCoord, 0)).rgb;
     vec3 tangentNormal = texture(normalSampler, vec3(TexCoord, 0)).rgb * 2.0 - 1.0;
     vec3 worldNormal = normalize(TBN * tangentNormal);
     
     //Ambient
-    float ambientStrength = 0.01;
+    float ambientStrength = 0.005;
     float ao = texture(aoSampler, vec3(TexCoord, 0)).r;
-    vec3 ambient = (ambientStrength * lightColour) * ao;
+    vec3 ambient = (ambientStrength * lightColour * lightIntensity) * ao;
     
     //Diffuse
     vec3 lightDir = normalize(lightPos - FragPos);
     float diffusePow = max(dot(worldNormal, lightDir), 0.0);
-    vec3 diffuse = diffusePow * lightColour;
+    vec3 diffuse = diffusePow * lightColour * lightIntensity;
     
-    //Phong specular
+    //Blinn-Phong specular
     vec3 viewDir = normalize(CamPos - FragPos);
-    vec3 reflectDir = reflect(-lightDir, worldNormal);
-    float specPow = pow(max(dot(viewDir, reflectDir), 0.0), 32.0f);
-    vec3 specular = specPow * lightColour;
+    vec3 halfwayDir = normalize(lightDir + viewDir);
+    float specPow = pow(max(dot(halfwayDir, worldNormal), 0.0), 128);
+    vec3 specular = 16 * specPow * lightColour * lightIntensity;
     
     //Emissive
-    vec3 emissive = texture(emissiveSampler, vec3(TexCoord, 0)).rgb;
+    vec3 emissive = 4 * texture(emissiveSampler, vec3(TexCoord, 0)).rgb;
     
     vec3 finalColour = ((ambient + diffuse + specular) * albedo) + emissive;
     
