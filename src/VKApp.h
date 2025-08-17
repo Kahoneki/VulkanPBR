@@ -11,6 +11,7 @@ struct CamData
 {
 	glm::mat4 view;
 	glm::mat4 proj;
+	glm::vec4 pos;
 };
 
 class VKApp

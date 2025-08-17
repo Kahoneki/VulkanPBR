@@ -10,6 +10,7 @@ layout(set = 0, binding = 0) uniform CameraData
 {
     mat4 view;
     mat4 proj;
+    vec4 pos;
 } cameraData;
 
 layout(push_constant) uniform ModelData
@@ -20,7 +21,8 @@ layout(push_constant) uniform ModelData
 layout(location = 0) out vec2 TexCoord;
 layout(location = 1) out vec3 FragPos;
 layout(location = 2) out vec3 WorldNormal;
-layout(location = 3) out mat3 TBN;
+layout(location = 3) out vec3 CamPos;
+layout(location = 4) out mat3 TBN;
 
 
 void main()

@@ -288,6 +288,7 @@ void VKApp::UpdateCamData(PlayerCamera& _playerCamera)
 	CamData camData{};
 	camData.view = _playerCamera.GetViewMatrix();
 	camData.proj = _playerCamera.GetProjectionMatrix();
+	camData.pos = glm::vec4(_playerCamera.GetPosition(), 0.0f);
 
 	//Write to buffer
 	memcpy(camDataUBOMap, &camData, sizeof(CamData));

@@ -19,6 +19,7 @@ public:
 
 	[[nodiscard]] glm::mat4 GetViewMatrix() const;
 	[[nodiscard]] glm::mat4 GetProjectionMatrix(PROJECTION_METHOD _method = PROJECTION_METHOD::PERSPECTIVE) const;
+	[[nodiscard]] glm::vec3 GetPosition() const;
 
 
 protected:

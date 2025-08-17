@@ -44,6 +44,13 @@ glm::mat4 Camera::GetProjectionMatrix(PROJECTION_METHOD _method) const
 
 
 
+glm::vec3 Camera::GetPosition() const
+{
+	return pos;
+}
+
+
+
 void Camera::UpdateCameraVectors()
 {
 	//Calculate new forward and up vectors
